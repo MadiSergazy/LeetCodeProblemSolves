@@ -14,10 +14,15 @@ func findErrorNums(nums []int) []int {
         if count == 2{
             dup = i
         } else if count == 0{
-missing = i
+            missing = i
+        } 
+        if (dup > 0 && missing > 0){
+             ans = append(ans, dup)
+             ans = append(ans, missing)
+            return ans
         }
     }
-    ans = append(ans, dup)
-            ans = append(ans, missing)
+   ans = append(ans, dup)
+    ans = append(ans, missing)
     return ans
 }
