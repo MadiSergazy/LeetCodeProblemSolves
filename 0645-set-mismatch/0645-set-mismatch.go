@@ -10,11 +10,7 @@ func findErrorNums(nums []int) []int {
     var ans []int
     
     for i:=1;i<=n;i++{
-        if len(ans) == 2{
-            return ans
-        }
         freq, present:=mp[i] 
-        
        
         if !present{
             ans=append(ans,i)
@@ -22,7 +18,7 @@ func findErrorNums(nums []int) []int {
         
         if present && freq==2{
 		//prepend in array
-            ans=append([]int{i},ans...)
+            ans=append([]int{i}, ans...)
         } 
     }
     return ans  
