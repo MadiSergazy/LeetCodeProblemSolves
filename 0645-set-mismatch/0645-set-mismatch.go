@@ -1,7 +1,34 @@
 func findErrorNums(nums []int) []int {
-
+ var ans []int
     mp:=make(map[int]int)
+    for _, v := range nums{
+        mp[v]++
+    }
+    for i := 1; i <= len(nums); i++{
+        dup, missing := mp[i]
+        if !missing{
+            ans = append(ans, i)
+        }
+        if dup == 2 && missing {
+            ans = append([]int{i}, ans...)
+        }
+    }
+    return ans
+}
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
     for _,value:=range nums{
         mp[value]+=1
     }
@@ -22,7 +49,7 @@ func findErrorNums(nums []int) []int {
         } 
     }
     return ans  
-}
+}*/
     
    /* var ans []int
     sort.Ints(nums)
