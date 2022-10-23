@@ -1,21 +1,27 @@
 func findErrorNums(nums []int) []int {
+
+    mp:=make(map[int]int)
     
-	result := make([]int, 2)
-	size := len(nums)
-	sum := 0
-	existNums := make([]bool, size+1)
-	for _, num := range nums {
-		sum += num
-		if !existNums[num] {
-			existNums[num] = true
-			continue
-		}
-		result[0] = num
-	}
-
-	result[1] = size*(size+1)/2 - sum + result[0]
-
-	return result
+    for _,value:=range nums{
+        mp[value]+=1
+    }
+    
+    n:=len(nums)
+    var ans []int
+    
+    for i:=1;i<=n;i++{
+        freq, present:=mp[i] 
+       
+        if !present{
+            ans=append(ans,i)
+        }
+        
+        if present && freq==2{
+		//prepend in array
+            ans=append([]int{i},ans...)
+        } 
+    }
+    return ans  
 }
     
    /* var ans []int
