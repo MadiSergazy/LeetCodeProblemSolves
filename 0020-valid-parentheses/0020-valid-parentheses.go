@@ -1,0 +1,27 @@
+func isValid(s string) bool {
+   /* mapa := make(map[string]int)
+    for _, v := range s{
+        mapa[string(v)]++
+    }*/
+   
+   var q []rune
+	for _, c := range s {
+        
+		switch c {
+            case '(':
+            q = append(q, ')')
+            case '{':
+            q = append(q, '}')
+            case '[':
+            q = append(q, ']')
+		    default:
+            if len(q) == 0 || c != q[len(q)-1] {
+                return false
+            }
+            q = q[:len(q)-1]
+		}
+
+	}
+
+	return len(q) == 0
+}
